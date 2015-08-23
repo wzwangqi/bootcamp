@@ -5,7 +5,7 @@ date: "8/21/2015"
 output: html_document
 ---
 
-```{r}
+```{r, echo=FALSE}
 library(curl)
 library(dplyr)
 library(ggplot2)
@@ -13,26 +13,28 @@ library(ggplot2)
 ```
 
 Load the data
-```{r}
+```{r, echo=FALSE}
 gap <- read.csv(curl("http://bit.ly/gap_data"))
 nrow(gap)
 ```
 
 Subset and visualize
-```{r}
+```{r, echo=FALSE}
 eu_52 <- gap %>%
   filter(continent == "Europe", year == 1952)
 ggplot(data = eu_52, aes(x = gdpPercap, y = lifeExp)) +
   geom_point()  
 ```
 
-```{r}
+```{r, echo=FALSE}
 eu_5267 <- gap %>%
   filter(continent == "Europe", year %in% c(1952, 1967))
 ggplot(data = eu_5267, aes(x = gdpPercap, y = lifeExp, 
                            color = factor(year))) +
   geom_point()                                    
 ```
+
+
 
 
 
